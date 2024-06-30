@@ -1,14 +1,14 @@
 import requests
 
 # Replace with your VirusTotal API key
-API_KEY = '545ca6354b7fb9b8b7fd6edceec7b941cea9807d8270b6e6f61ca2c8b8149bce'
+API_KEY ='545ca6354b7fb9b8b7fd6edceec7b941cea9807d8270b6e6f61ca2c8b8149bce'
 
 def check_phishing(url):
     url = url.strip()
 
     # Construct the URL for VirusTotal API
     url_scan = f'https://www.virustotal.com/vtapi/v2/url/report'
-    params = {'apikey': API_KEY, 'resource': url}
+    params = {'apikey':API_KEY,'resource': url}
 
     try:
         # Send GET request to VirusTotal
@@ -26,7 +26,7 @@ def check_phishing(url):
             else:
                 return "URL not found in VirusTotal database"
         else:
-            return f"Error: {response.status_code} - {response_json.get('verbose_msg', 'Unknown error')}"
+            return f"Error: {response.status_code}-{response_json.get('verbose_msg','Unknown error')}"
 
     except Exception as e:
         return f"Error: {str(e)}"
@@ -37,4 +37,4 @@ if __name__ == '__main__':
 
     # Call check_phishing function
     result = check_phishing(test_url)
-    print(f"Result for {test_url}: {result}")
+    print(f"Result for {test_url}:{result}")
